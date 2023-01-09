@@ -1,0 +1,19 @@
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.l5.com.br/" target="_blank">
+        <img src="https://www.l5.com.br/wp-content/uploads/2017/08/logo-black-1024x729.png" alt="Logo">
+      </a>
+      <span class="navbar-burger burger" data-target="navbarMenuHeroC" [class.is-active]="burgerSwitch" (click)="toggleBurger()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="navbarMenuHeroC" class="navbar-menu" [class.is-active]="burgerSwitch">
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact : true }">Music</a>
+      </div>
+    </div>
+  </div>
+</header>

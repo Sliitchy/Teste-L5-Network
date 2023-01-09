@@ -1,0 +1,57 @@
+<h1 class="title is-1">Need a Movie?</h1>
+<p class="subtitle">Get information about your favorite movies using TheMovieDB API</p>
+
+<form (ngSubmit)="searchMovies()">
+  <div class="field has-addons">
+    <div class="control has-icons-left is-expanded">
+      <input class="input" type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Movies">
+      <span class="icon is-small is-left"><i class="fas fa-film"></i></span>
+    </div>
+    <div class="control"><button class="button is-link">Search</button></div>
+  </div>
+</form><br>
+
+<div class="fadein" *ngIf="searchResult">
+  <div class="columns">
+    <div class="column is-4">
+        <img class="image" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}">
+    </div>
+    <div class="column is-8">
+      <div class="box">
+        <nav class="panel">
+          <div class="panel-heading">
+            <h1 class="title has-text-info"><a href="http://www.imdb.com/title/{{ movie.imdb_id }}" target="_blank">{{ movie.title }}</a></h1>
+            <h2 class="subtitle has-text-black">{{ movie.tagline }}</h2>
+          </div>
+          <div class="panel-block">
+            <p class="content has-text-justified">{{ movie.overview }}</p>
+          </div>
+        </nav>
+        <div class="columns">
+          <div class="column">
+            <div class="tags has-addons" *ngIf="movie.revenue === 0">
+              <span class="tag is-dark">Status</span>
+              <span class="tag is-danger">Not Released</span>
+            </div>
+            <div class="tags has-addons" *ngIf="movie.revenue !== 0">
+              <span class="tag is-dark">Revenue</span>
+              <span class="tag is-success">${{ movie.revenue | number }}</span>
+            </div>
+          </div>
+          <div class="column">
+            <div class="tags has-addons">
+              <span class="tag is-dark">Release Date</span>
+              <span class="tag is-link">{{ movie.release_date | date:'M/d/yyyy' }}</span>
+            </div>
+          </div>
+          <div class="column">
+            <div class="tags has-addons">
+              <span class="tag is-dark">Runtime</span>
+              <span class="tag is-info">{{ movie.runtime }}</span>
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+  </div>
+</div>

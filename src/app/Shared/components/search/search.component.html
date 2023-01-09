@@ -1,0 +1,70 @@
+<h1 class="title is-1">Qual música você está buscando?</h1>
+<p class="subtitle">Procure por uma música ou artista que deseja.</p>
+
+<form (ngSubmit)="searchMusic()">
+  <div class="field has-addons">
+    <div class="control has-icons-left is-expanded">
+      <input class=" searchcard input" type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Procurar">
+      <span class="icon is-small is-left"><i class="fab fa-lastfm"></i></span>
+    </div>
+    <div class="control"><button class="button is-link">Procurar</button></div>
+  </div>
+</form><br>
+
+<div class="fadein" *ngIf="searchResult">
+
+  <!-- Display Artist -->
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-128x128">
+          <a href="{{ artist.url }}" target="_blank"><img src="{{ artist.image }}" alt="artistImage"></a>
+        </figure>
+      </div>
+      <div class="media-content is-clipped">
+        <div class="content">
+          <a class="has-text-info" href="{{ artist.url }}" target="_blank"><strong>{{ artist.name }}</strong></a>
+            <br> <div innerHTML="{{ artist.summary }}"></div>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="tags has-addons">
+                <span class="tag is-dark">Ouvintes</span>
+                <span class="tag is-info">{{ artist.listeners | number }}</span>
+              </div>
+            </div>
+            <div class="level-item">
+              <div class="tags has-addons">
+                <span class="tag is-dark">Número de reproduções</span>
+                <span class="tag is-info"> {{ artist.playcount | number }}</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </article>
+  </div>
+
+  <!-- Display Tracks -->
+  <h1 class="title has-text-centered">Top 5 Músicas</h1>
+  <div *ngFor="let track of tracks">
+    <div class="columns">
+      <div class="column">
+        <nav class="panel">
+          <div class="panel-block">
+            <div class="column is-8">
+              <p class="title is-4 has-text-info"><a href="{{ track.url }}" target="_blank">{{ track.name }}</a></p>
+            </div>
+            <div class="column">
+              <p class="subtitle has-white-text has-text-centered">Top <br><span class="tag is-light">{{ track.rank }}</span></p>
+            </div>
+            <div class="column">
+              <p class="subtitle has-white-text has-text-centered">Ouvintes <br><span class="tag is-info">{{ track.listeners | number }}</span></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
