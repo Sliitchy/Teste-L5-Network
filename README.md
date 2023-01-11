@@ -13,6 +13,6 @@ Teste visando conhecimento em Front end usando Angular
 1. execute `npm install -g yarn` para instalar o yarn
 1. execute `yarn install` para instalar as dependências do projeto
 1. execute `yarn build` para instalar a build
-1. execute `yarn start`, e navegue até `http://localhost:4200/`
+1. execute `yarn start` e navegue até `http://localhost:4200/`
 
 
